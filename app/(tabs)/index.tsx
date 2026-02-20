@@ -142,7 +142,7 @@ export default function HomeScreen() {
           <View style={styles.heroTextBlock}>
             <Text style={styles.heroTitle}>Mother&apos;s Day</Text>
             <Text style={styles.heroSubtitle}>
-              Ungkapkan cinta untuk Ibu dengan kue {"\n"} manis dari Maroku
+              Ungkapkan cinta untuk Ibu dengan kue {"\n"}manis dari Maroku
             </Text>
           </View>
         </Animated.View>
@@ -316,7 +316,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "flex-end",
-    gap: 8,
+    gap: 6,
   },
   quickSubtitle: {
     flex: 1,
