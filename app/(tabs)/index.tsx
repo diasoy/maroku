@@ -1,6 +1,6 @@
-import { Image } from 'expo-image';
-import { useRouter } from 'expo-router';
-import { useEffect, useRef } from 'react';
+import { Image } from "expo-image";
+import { useRouter } from "expo-router";
+import { useEffect, useRef } from "react";
 import {
   Animated,
   Easing,
@@ -9,11 +9,11 @@ import {
   Text,
   TouchableOpacity,
   View,
-} from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { FigmaIcon, type FigmaIconName } from '@/components/ui/figma-icon';
-import { Fonts } from '@/constants/theme';
+import { FigmaIcon, type FigmaIconName } from "@/components/ui/figma-icon";
+import { Fonts } from "@/constants/theme";
 
 type QuickAction = {
   id: string;
@@ -28,41 +28,41 @@ type StockItem = {
   subtitle: string;
   stock: string;
   price: string;
-   
+
   image: any;
 };
 
 const quickActions: QuickAction[] = [
   {
-    id: 'order',
-    title: 'Pesan',
-    description: 'Pesan menu katalog dengan mudah',
-    icon: 'cart',
+    id: "order",
+    title: "Pesan",
+    description: "Pesan menu katalog dengan mudah",
+    icon: "cart",
   },
   {
-    id: 'custom-cake',
-    title: 'Custom Cake',
-    description: 'Kue custom sesuai rasa dan desain pilihanmu',
-    icon: 'cake',
+    id: "custom-cake",
+    title: "Custom Cake",
+    description: "Kue custom sesuai rasa dan desain pilihanmu",
+    icon: "cake",
   },
 ];
 
 const stockItems: StockItem[] = [
   {
-    id: 'brownies-burnt-cheesecake',
-    name: 'Brownies Burnt Cheesecake',
-    subtitle: 'Tanpa Gula | Tanpa Tepung',
-    stock: 'Sisa 10 Slice',
-    price: 'Rp25.000',
-    image: require('@/assets/images/fotoproduk.png'),
+    id: "brownies-burnt-cheesecake",
+    name: "Brownies Burnt Cheesecake",
+    subtitle: "Tanpa Gula | Tanpa Tepung",
+    stock: "Sisa 10 Slice",
+    price: "Rp25.000",
+    image: require("@/assets/images/fotoproduk.png"),
   },
   {
-    id: 'matcha-tiramisu',
-    name: 'Matcha Burnt Cheesecake',
-    subtitle: 'Tanpa Gula | Tanpa Tepung',
-    stock: 'Sisa 10 Slice',
-    price: 'Rp22.000',
-    image: require('@/assets/images/matcha_tiramissu.png'),
+    id: "matcha-tiramisu",
+    name: "Matcha Burnt Cheesecake",
+    subtitle: "Tanpa Gula | Tanpa Tepung",
+    stock: "Sisa 10 Slice",
+    price: "Rp22.000",
+    image: require("@/assets/images/matcha_tiramissu.png"),
   },
 ];
 
@@ -115,8 +115,11 @@ export default function HomeScreen() {
   });
 
   return (
-    <SafeAreaView edges={['top']} style={styles.safeArea}>
-      <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={styles.contentContainer}>
+    <SafeAreaView edges={["top"]} style={styles.safeArea}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.contentContainer}
+      >
         <View style={styles.headerRow}>
           <Text style={styles.helloText}>Hello, Feen!</Text>
           <View style={styles.headerButtons}>
@@ -131,14 +134,16 @@ export default function HomeScreen() {
 
         <Animated.View style={[styles.heroCard, reveal(heroAnim)]}>
           <Image
-            source={require('@/assets/images/banner.png')}
+            source={require("@/assets/images/banner.png")}
             contentFit="cover"
             style={styles.heroImage}
           />
           <View style={styles.heroShade} />
           <View style={styles.heroTextBlock}>
             <Text style={styles.heroTitle}>Mother&apos;s Day</Text>
-            <Text style={styles.heroSubtitle}>Ungkapkan cinta untuk Ibu dengan kue <br />manis dari Maroku</Text>
+            <Text style={styles.heroSubtitle}>
+              Ungkapkan cinta untuk Ibu dengan kue {"\n"} manis dari Maroku
+            </Text>
           </View>
         </Animated.View>
 
@@ -146,11 +151,15 @@ export default function HomeScreen() {
           <Text style={styles.sectionTitle}>Buat Pesanan</Text>
           <View style={styles.quickActionRow}>
             {quickActions.map((item) => (
-              <TouchableOpacity key={item.id} activeOpacity={0.88} style={styles.quickCard}>
+              <TouchableOpacity
+                key={item.id}
+                activeOpacity={0.88}
+                style={styles.quickCard}
+              >
                 <Text style={styles.quickTitle}>{item.title}</Text>
-                <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'flex-end', gap:8 }}>
+                <View style={styles.quickBottom}>
                   <Text style={styles.quickSubtitle}>{item.description}</Text>
-                  <FigmaIcon name={item.icon} size={32} style={styles.quickIcon} />
+                  <FigmaIcon name={item.icon} size={32} />
                 </View>
               </TouchableOpacity>
             ))}
@@ -161,14 +170,15 @@ export default function HomeScreen() {
           <View style={styles.bigOrderContent}>
             <Text style={styles.bigOrderTitle}>Big Order</Text>
             <Text style={styles.bigOrderText}>
-              Pesanan kue jumlah besar untuk setiap momen spesial. Dapatkan penawaran menarik sekarang.
+              Pesanan kue jumlah besar untuk setiap momen spesial. Dapatkan
+              penawaran menarik sekarang.
             </Text>
             <TouchableOpacity activeOpacity={0.9} style={styles.bigOrderButton}>
               <Text style={styles.bigOrderButtonText}>Lihat Detail</Text>
             </TouchableOpacity>
           </View>
           <Image
-            source={require('@/assets/icon/kuebigorder.png')}
+            source={require("@/assets/icon/kuebigorder.png")}
             contentFit="contain"
             style={styles.bigOrderImage}
           />
@@ -180,9 +190,19 @@ export default function HomeScreen() {
             <TouchableOpacity
               key={item.id}
               activeOpacity={0.86}
-              onPress={() => router.push({ pathname: '/product/[id]', params: { id: item.id } })}
-              style={styles.stockCard}>
-              <Image source={item.image} contentFit="cover" style={styles.stockImage} />
+              onPress={() =>
+                router.push({
+                  pathname: "/product/[id]",
+                  params: { id: item.id },
+                })
+              }
+              style={styles.stockCard}
+            >
+              <Image
+                source={item.image}
+                contentFit="cover"
+                style={styles.stockImage}
+              />
               <View style={styles.stockInfo}>
                 <Text style={styles.stockName}>{item.name}</Text>
                 <Text style={styles.stockMeta}>{item.subtitle}</Text>
@@ -203,7 +223,7 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#FEFEFE',
+    backgroundColor: "#FEFEFE",
   },
   contentContainer: {
     paddingHorizontal: 16,
@@ -212,68 +232,68 @@ const styles = StyleSheet.create({
   headerRow: {
     marginTop: 12,
     marginBottom: 12,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
   },
   helloText: {
     fontSize: 20,
-    color: '#1f2b3a',
+    color: "#1f2b3a",
     fontFamily: Fonts.bold,
   },
   headerButtons: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
   },
   circleButton: {
     width: 32,
     height: 32,
     borderRadius: 16,
-    backgroundColor: 'transparent',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "transparent",
+    justifyContent: "center",
+    alignItems: "center",
   },
   heroCard: {
     borderRadius: 16,
-    overflow: 'hidden',
+    overflow: "hidden",
     marginBottom: 16,
-    backgroundColor: '#dce8f3',
+    backgroundColor: "#dce8f3",
   },
   heroImage: {
-    width: '100%',
+    width: "100%",
     height: 256,
   },
   heroShade: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(8, 37, 74, 0.33)',
+    backgroundColor: "rgba(8, 37, 74, 0.33)",
   },
   heroTextBlock: {
-    position: 'absolute',
+    position: "absolute",
     left: 20,
     right: 14,
     bottom: 16,
   },
   heroTitle: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 18,
     lineHeight: 21,
     fontFamily: Fonts.bold,
     marginBottom: 4,
   },
   heroSubtitle: {
-    color: '#f3f7ff',
+    color: "#f3f7ff",
     fontSize: 12,
     marginTop: 2,
     fontFamily: Fonts.medium,
   },
   sectionTitle: {
-    color: '#1f2b3a',
+    color: "#1f2b3a",
     fontSize: 17,
     marginBottom: 10,
     fontFamily: Fonts.bold,
   },
   quickActionRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 8,
     marginBottom: 14,
   },
@@ -281,63 +301,65 @@ const styles = StyleSheet.create({
     flex: 1,
     borderRadius: 11,
     borderWidth: 1,
-    borderColor: '#0b4a87',
-    backgroundColor: '#eff4f9',
+    borderColor: "#0b4a87",
+    backgroundColor: "#eff4f9",
     paddingHorizontal: 20,
     paddingVertical: 14,
-    justifyContent: 'space-between',
+    justifyContent: "space-between",
   },
   quickTitle: {
-    color: '#0b4a87',
+    color: "#0b4a87",
     fontSize: 15,
     fontFamily: Fonts.bold,
   },
+  quickBottom: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    gap: 8,
+  },
   quickSubtitle: {
-    color: '#314e70',
+    flex: 1,
+    color: "#314e70",
     fontSize: 10,
     lineHeight: 13,
     fontFamily: Fonts.medium,
-    paddingRight: 20,
-  },
-  quickIcon: {
-    alignSelf: 'flex-end',
-    marginBottom: 1,
   },
   bigOrderCard: {
     borderRadius: 13,
-    backgroundColor: '#0b4a87',
+    backgroundColor: "#0b4a87",
     paddingVertical: 8,
     paddingHorizontal: 16,
     marginBottom: 14,
-    overflow: 'hidden',
-    flexDirection: 'row',
-    alignItems: 'center',
+    overflow: "hidden",
+    flexDirection: "row",
+    alignItems: "center",
   },
   bigOrderContent: {
     flex: 1,
   },
   bigOrderTitle: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 20,
     fontFamily: Fonts.bold,
   },
   bigOrderText: {
     marginTop: 4,
-    color: '#e6f0fb',
+    color: "#e6f0fb",
     fontSize: 11,
     lineHeight: 16,
     fontFamily: Fonts.regular,
   },
   bigOrderButton: {
     marginTop: 10,
-    alignSelf: 'flex-start',
+    alignSelf: "flex-start",
     borderRadius: 8,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     paddingVertical: 7,
     paddingHorizontal: 12,
   },
   bigOrderButtonText: {
-    color: '#0b4a87',
+    color: "#0b4a87",
     fontSize: 11,
     fontFamily: Fonts.semibold,
   },
@@ -346,14 +368,14 @@ const styles = StyleSheet.create({
     height: 144,
   },
   stockCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     borderRadius: 13,
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     padding: 8,
     marginBottom: 8,
     borderWidth: 1,
-    borderColor: '#d9e5f1',
+    borderColor: "#d9e5f1",
   },
   stockImage: {
     width: 84,
@@ -365,19 +387,19 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   stockName: {
-    color: '#253346',
+    color: "#253346",
     fontSize: 14,
     marginBottom: 1,
     fontFamily: Fonts.semibold,
   },
   stockMeta: {
-    color: '#6e7f92',
+    color: "#6e7f92",
     fontSize: 11,
     fontFamily: Fonts.regular,
     marginTop: 2,
   },
   stockPrice: {
-    color: '#0b4a87',
+    color: "#0b4a87",
     fontSize: 14,
     fontFamily: Fonts.bold,
     marginTop: 4,
@@ -386,12 +408,12 @@ const styles = StyleSheet.create({
     width: 30,
     height: 30,
     borderRadius: 8,
-    backgroundColor: '#0b4a87',
-    justifyContent: 'center',
-    alignItems: 'center',
+    backgroundColor: "#0b4a87",
+    justifyContent: "center",
+    alignItems: "center",
   },
   addButtonText: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 18,
     lineHeight: 18,
     fontFamily: Fonts.bold,
